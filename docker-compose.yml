@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  php-fpm:
+    container_name: deployer
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      args:
+    volumes:
+      - .:/var/www/html:delegated
+      - ./vendor/:/var/www/html/vendor:delegated
+    networks:
+      - internal
+
+networks:
+  internal:
+    internal: true
