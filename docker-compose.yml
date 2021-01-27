@@ -5,14 +5,7 @@ services:
     container_name: deployer
     build:
       context: .
-      dockerfile: ./docker/php/Dockerfile
-      args:
+      dockerfile: ./.docker/php/Dockerfile
     volumes:
-      - .:/var/www/html:delegated
-      - ./vendor/:/var/www/html/vendor:delegated
-    networks:
-      - internal
-
-networks:
-  internal:
-    internal: true
+      - .:/var/www/html/:rw
+      - ./vendor/:/var/www/html/vendor:rw
